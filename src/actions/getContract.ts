@@ -12,9 +12,7 @@ import { buildAbiFunction } from "@/utils";
  * read (`eth_call`) or write (`eth_sendTransaction` / UserOperation) operations.
  *
  * @template P Captures the specific parameters type, including the `abi` array (use `as const` on ABI).
- * @param client The RPC client instance. Must provide necessary properties/methods
- * compatible with Viem's PublicClient for reads and the specific
- * `writeContract` action's requirements (e.g., account, chain) for writes.
+ * @param client The CoreClient instance used to be injected in the contract instance for RPC interactions.
  * @param params Contract parameters: `{ address, abi }`.
  * @returns A contract instance augmented with typed methods for all ABI functions.
  */

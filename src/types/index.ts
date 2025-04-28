@@ -3,6 +3,6 @@ export type { AbiError, AbiConstructor, AbiFunction, AbiEvent, AbiParameter, Abi
 
 export type { CoreClient, CoreClientConfig } from './CoreClient';
 
-export { TraceFilterParameters, TraceFilterReturnType } from './TraceApi';
+export { TraceFilterParameters, TraceFilterReturnType, TraceTransactionParameters, TraceTransactionReturnType, TraceBlockParameters, TraceBlockReturnType } from './Trace';
 export { GetContractParameters, GetContractReturnType, AbiToContractEventsHandlers } from './Contract';
 export { TransactionOptions } from './Transaction';

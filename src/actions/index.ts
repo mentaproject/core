@@ -20,4 +20,4 @@ export {
 export { getContract } from "./getContract";
 
 /** Trace Actions */
-export { getTransactions } from "./getTransactions";
+export { traceFilter } from "./traceFilter";
