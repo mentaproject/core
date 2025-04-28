@@ -7,7 +7,7 @@ export type CallType = "call" | "delegatecall" | "staticcall" | string;
 // Core Trace Types
 // =============================================================================
 
-export type GenericTraceAction = {
+export type TraceAction = {
     callType?: CallType;
     from: string;
     gas: string;
@@ -15,18 +15,18 @@ export type GenericTraceAction = {
     to?: string | null;
     value: string;
 };
-export type GenericTraceActionResult = {
+export type TraceActionResult = {
     gasUsed: string;
     output: string;
     address?: string;
     error?: string;
     revertReason?: string;
 };
-export type GenericTraceEntry = {
-    action?: GenericTraceAction;
+export type TraceEntry = {
+    action?: TraceAction;
     blockHash: string;
     blockNumber: number;
-    result?: GenericTraceActionResult;
+    result?: TraceActionResult;
     subtraces: number;
     traceAddress: number[];
     transactionHash: string;
@@ -40,7 +40,7 @@ export type GenericTraceEntry = {
 // =============================================================================
 
 export type TraceTransactionParameters = Hash;
-export type TraceTransactionReturnType = GenericTraceEntry[];
+export type TraceTransactionReturnType = TraceEntry[];
 
 // =============================================================================
 // trace_filter Types
@@ -54,7 +54,7 @@ export type TraceFilterParameters = {
     after?: number;
     count?: number;
 };
-export type TraceFilterReturnType = GenericTraceEntry[];
+export type TraceFilterReturnType = TraceEntry[];
 
 // =============================================================================
 // trace_block Types
@@ -62,7 +62,7 @@ export type TraceFilterReturnType = GenericTraceEntry[];
 
 export type BlockTraceTransactionResult = {
     transactionHash: string;
-    trace: GenericTraceEntry[];
+    trace: TraceEntry[];
 };
 export type TraceBlockParameters = Quantity | BlockTag;
 export type TraceBlockReturnType = BlockTraceTransactionResult[];
