@@ -1,0 +1,10 @@
+node_modules
+test.ts
+test.json
+package-lock.json
+.npmignore
+dist
+tsconfig.cjs.json
+tsconfig.esm.json
+tsconfig.json
+rollup.config.cjs
