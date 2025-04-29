@@ -46,7 +46,7 @@
   },
   "scripts": {
     "test": "ts-node test.ts",
-    "build:types": "tsc --project tsconfig.json --emitDeclarationOnly",
+    "build:types": "tsc --emitDeclarationOnly",
     "build:runtime": "rollup -c rollup.config.cjs",
     "build": "npm run build:types && npm run build:runtime",
     "patch": "npm version patch && npm run build && npm publish",

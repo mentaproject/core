@@ -1,4 +1,4 @@
-import  type { TraceFilterParameters, TraceFilterReturnType, CoreClient, Hash } from "@/types";
+import  type { TraceFilterParameters, TraceFilterReturnType, CoreClient, Hash } from "../types";
 
 /**
  * Calls the 'trace_filter' RPC method to retrieve execution traces

@@ -1,9 +1,9 @@
 
-import type { AbiToContractEventsHandlers, GetContractParameters, CoreClient, AbiError, AbiEvent, AbiItem, Address, Hex, Log } from "@/types";
-import type { FilterAbiByType, DecodeErrorResultReturnType } from "@/types/Abi";
+import type { AbiToContractEventsHandlers, GetContractParameters, CoreClient, AbiError, AbiEvent, AbiItem, Address, Hex, Log } from "../types";
+import type { FilterAbiByType, DecodeErrorResultReturnType } from "../types/Abi";
 
-import { watchContractEvent } from "@/actions";
-import { decodeErrorResult as viemDecodeErrorResult } from "@/utils";
+import { watchContractEvent } from "../actions";
+import { decodeErrorResult as viemDecodeErrorResult } from "../utils";
 
 
 export class Contract<P extends GetContractParameters<ReadonlyArray<AbiItem>>> {
@@ -25,7 +25,7 @@ export class Contract<P extends GetContractParameters<ReadonlyArray<AbiItem>>> {
        ) as FilterAbiByType<P['abi'], 'error'>;
    }
 
-   on<TEventName extends keyof AbiToContractEventsHandlers<P['abi']>>(
+   on<TEventName extends string & keyof AbiToContractEventsHandlers<P['abi']>>(
        eventName: TEventName,
        callback: AbiToContractEventsHandlers<P['abi']>[TEventName]
    ): () => void {

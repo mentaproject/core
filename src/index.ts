@@ -1,1 +1,1 @@
-export { createClient } from "@/clients";
+export { createClient } from "./clients";

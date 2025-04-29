@@ -1,7 +1,7 @@
-import type { AbiFunction, AbiItem, GetContractReturnType, GetContractParameters, CoreClient } from "@/types";
+import type { AbiFunction, AbiItem, GetContractReturnType, GetContractParameters, CoreClient } from "../types";
 
-import { Contract } from "@/structures";
-import { buildAbiFunction } from "@/utils";
+import { Contract } from "../structures";
+import { buildAbiFunction } from "../utils";
 
 /**
  * Creates a type-safe contract instance with runtime methods for ABI functions.

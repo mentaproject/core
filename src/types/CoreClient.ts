@@ -1,9 +1,9 @@
-import type{ RenameProperty } from '@/types/Utils';
-import type { Transport, Chain } from '@/types';
+import type{ RenameProperty } from './Utils';
+import type { Transport, Chain } from './';
 
 import type { Client as ViemClient } from 'viem';
 import type { SmartAccount, BundlerClientConfig } from 'viem/account-abstraction';
-import type { SmartAccountClientConfig } from 'permissionless';
+import type { SmartAccountClientConfig } from "permissionless";
 
 export type PermissionlessClientProperties<
     client extends ViemClient | undefined = ViemClient | undefined,

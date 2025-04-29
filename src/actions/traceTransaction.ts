@@ -1,4 +1,4 @@
-import  type { TraceTransactionParameters, TraceTransactionReturnType, CoreClient, Hash } from "@/types";
+import  type { TraceTransactionParameters, TraceTransactionReturnType, CoreClient, Hash } from "../types";
 
 /**
  * Calls the 'trace_transaction' RPC method to retrieve execution traces

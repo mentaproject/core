@@ -1,4 +1,4 @@
-import type { CoreClient, CoreClientConfig } from '@/types';
+import type { CoreClient, CoreClientConfig } from '../types';
 
 import { createClient as viemCreateClient } from 'viem';
 

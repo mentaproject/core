@@ -1,8 +1,8 @@
 /**
  * ABI-related TypeScript types for generating typed contract interactions.
  */
-import type { AbiItem, Log, AbiEvent, AbiFunction, AbiParameter, AbiParameterToPrimitiveType, Hex, AbiError, TransactionOptions } from "@/types";
-import type { FindElementByName, FilterTupleElements } from "@/types/Utils";
+import type { AbiItem, Log, AbiEvent, AbiFunction, AbiParameter, AbiParameterToPrimitiveType, Hex, AbiError, TransactionOptions } from "./index";
+import type { FindElementByName, FilterTupleElements } from "./Utils";
 
 // =============================================================================
 // Core ABI Transformation Types

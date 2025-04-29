@@ -1,8 +1,8 @@
-import type { CoreClient, TransactionOptions, AbiFunction, Hex } from "@/types";
-import type { AbiInputsToArgsObject } from "@/types/Abi";
+import type { CoreClient, TransactionOptions, AbiFunction, Hex } from "../types";
+import type { AbiInputsToArgsObject } from "../types/Abi";
 
-import { BaseError, RawContractError, Contract } from "@/structures";
-import { readContract, writeContract } from "@/actions";
+import { BaseError, RawContractError, Contract } from "../structures";
+import { readContract, writeContract } from "../actions";
 
 /**
  * @internal

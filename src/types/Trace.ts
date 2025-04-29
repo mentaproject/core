@@ -1,4 +1,4 @@
-import type { BlockTag, Hash, Quantity } from "@/types";
+import type { BlockTag, Hash, Quantity } from "./index";
 
 export type TraceType = "call" | "create" | "delegatecall" | "staticcall" | "suicide" | string;
 export type CallType = "call" | "delegatecall" | "staticcall" | string;

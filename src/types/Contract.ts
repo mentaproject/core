@@ -1,7 +1,7 @@
-import type { AbiItem, Address } from "@/types";
-import type { AbiEventsToHandlers, AddFunctions, FilterAbiByType } from "@/types/Abi";
+import type { AbiItem, Address } from "./index";
+import type { AbiEventsToHandlers, AddFunctions, FilterAbiByType } from "./Abi";
 
-import { Contract } from "@/structures";
+import { Contract } from "../structures";
 
 /**
  * Defines the parameters for the `getContract` factory function.
