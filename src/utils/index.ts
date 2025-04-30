@@ -1,2 +1,2 @@
 export * from './buildAbiFunction';
-export { decodeErrorResult } from 'viem/utils';
+export *from 'viem/utils';
