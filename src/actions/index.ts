@@ -21,3 +21,6 @@ export { getContract } from "./getContract";
 
 /** Trace Actions */
 export { traceFilter } from "./traceFilter";
+
+/** Block Range Actions */
+export { createBlockRangePager } from "./createBlockRangePager";

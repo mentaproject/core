@@ -1,4 +1,4 @@
-import type { BlockTag, Hash, Quantity } from "./index";
+import type { Address, BlockTag, Hash, Quantity } from "./index";
 
 export type TraceType = "call" | "create" | "delegatecall" | "staticcall" | "suicide" | string;
 export type CallType = "call" | "delegatecall" | "staticcall" | string;
@@ -47,10 +47,10 @@ export type TraceTransactionReturnType = TraceEntry[];
 // =============================================================================
 
 export type TraceFilterParameters = {
-    fromBlock?: string;
-    toBlock?: string;
-    fromAddress?: string | string[];
-    toAddress?: string | string[];
+    fromBlock?: Quantity | BlockTag;
+    toBlock?: Quantity | BlockTag;
+    fromAddress?: Address | Address[];
+    toAddress?: Address | Address[];
     after?: number;
     count?: number;
 };
