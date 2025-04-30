@@ -55,7 +55,7 @@
   },
   "author": "@mentaproject",
   "license": "ISC",
-  "peerDependencies": {
+  "dependencies": {
     "permissionless": "^0.2.42"
   },
   "devDependencies": {
