@@ -80,13 +80,12 @@ export type BlockRange = { fromBlock: bigint; toBlock: bigint; };
  * Any type T used with the fetcher for item-based pagination must implement this interface.
  * This allows the fetcher to precisely determine the resume point for the next page.
  */
-export interface PaginatableItem {
+export type PaginatableItem<T = {[key: string]: any}> = T & {
     blockNumber: bigint;
     // index: A property representing the item's order or unique identifier within its block.
     // This is crucial for resuming pagination from a specific item.
     index: number;
-    [key: string]: any; // Allow other properties
-}
+};
 
 
 /**
