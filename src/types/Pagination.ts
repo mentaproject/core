@@ -123,9 +123,9 @@ export interface FetchPageResult<T extends PaginatableItem> {
 /**
  * Type for the specific callback function that performs the actual batch request to the data source.
  */
-export type onBlockRangeCallback<T extends PaginatableItem> = (blockRange: BlockRange) => Promise<T[]>;
+export type onBlockRangeCallback<T extends PaginatableItem = PaginatableItem> = (blockRange: BlockRange) => Promise<T[]>;
 
 /**
  * Type for the function that will be stored in the PaginatedResult instance.
  */
-export type FetchNextPageCallback<T extends PaginatableItem> = () => Promise<PaginatedResult<T> | null>;
+export type FetchNextPageCallback<T extends PaginatableItem = PaginatableItem> = () => Promise<PaginatedResult<T> | null>;
