@@ -1,24 +1,7 @@
 import { PaginatedResult } from "../structures/PaginatedResult";
-import { onBlockRangeCallback, BlockRangePagerConfig, PaginatableItem, PaginationState } from "../types/Pagination";
+import { onBlockRangeCallback, BlockRangePagerConfig, PaginatableItem, PaginationState, createBlockRangePagerParameters } from "../types/Pagination";
 import { getPage } from "../utils/pagination/pages";
 
-
-export type createBlockRangePagerParameters = {
-    itemsPerPage: number,
-    startBlock: bigint,
-    blockLimit: bigint,
-    direction: "backward" | "forward",
-    options?: {
-        dividerOnHigh: number,
-        multiplierOnLow: number,
-        multiplierOnZero: number,
-        highActivityThreshold: number,
-        lowActivityThreshold: number,
-        initialRangeSize: number,
-        maxRangeSize: number,
-        minRangeSize: number,
-    }
-};
 /**
  * Creates a pager to iterate over blockranges. Blockranges are dynamically adjusted based on the provided configuration
  * and how many items are found per batch.

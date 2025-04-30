@@ -9,3 +9,5 @@ export {
 } from './Trace';
 export { GetContractParameters, GetContractReturnType, AbiToContractEventsHandlers } from './Contract';
 export { TransactionOptions } from './Transaction';
+
+export type { BlockRangePagerConfig, createBlockRangePagerParameters, BlockRange, PaginatableItem } from './Pagination';

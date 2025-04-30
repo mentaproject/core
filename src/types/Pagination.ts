@@ -4,6 +4,28 @@ import { PaginatedResult } from "../structures/PaginatedResult";
 // Block Range Pager
 // =============================================================================
 
+export type createBlockRangePagerParameters = {
+    /** The number of items to return per page. */
+    itemsPerPage: number,
+    /** The starting block number to fetch. */
+    startBlock: bigint,
+    /** The latest block number to search to. (e.g., latest block in forward, genesis block in backward) */
+    blockLimit: bigint,
+    /** The direction of the block search. */
+    direction: "backward" | "forward",
+    /** Optional configuration options for the pager. Recommended to modify in high-volume scenarios. */
+    options?: {
+        dividerOnHigh: number,
+        multiplierOnLow: number,
+        multiplierOnZero: number,
+        highActivityThreshold: number,
+        lowActivityThreshold: number,
+        initialRangeSize: number,
+        maxRangeSize: number,
+        minRangeSize: number,
+    }
+};
+
 export type BlockRangePagerConfig = {
     // Range size parameters
 
