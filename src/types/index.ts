@@ -50,6 +50,10 @@ export type {
     ReadContractReturnType,
     GetProofReturnType,
     WaitForTransactionReceiptReturnType,
+    SendTransactionReturnType,
+    SignMessageReturnType,
+    SignTypedDataReturnType,
+    WriteContractReturnType,
     // ====================================
     // Viem Actions Parameters
     // ====================================
@@ -95,6 +99,10 @@ export type {
     ReadContractParameters,
     GetProofParameters,
     WaitForTransactionReceiptParameters,
+    SendTransactionParameters,
+    SignMessageParameters,
+    SignTypedDataParameters,
+    WriteContractParameters,
 } from "viem";
 
 export type { AbiError, AbiConstructor, AbiFunction, AbiEvent, AbiParameter, AbiParameterToPrimitiveType } from "abitype";

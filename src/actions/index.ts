@@ -45,7 +45,7 @@ export {
     watchPendingTransactions,
     readContract,
     getProof,
-    waitForTransactionReceipt
+    waitForTransactionReceipt,
 } from "viem/actions";
 
 export {
