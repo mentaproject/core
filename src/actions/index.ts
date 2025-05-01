@@ -36,7 +36,7 @@ export {
     getTransactionReceipt,
     multicall,
     simulateBlocks,
-    simulate,
+    simulateContract,
     simulateCalls,
     watchBlocks,
     watchBlockNumber,
