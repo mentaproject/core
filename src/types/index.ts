@@ -116,4 +116,4 @@ export {
 export { GetContractParameters, GetContractReturnType, AbiToContractEventsHandlers } from './Contract';
 export { TransactionOptions } from './Transaction';
 
-export type { BlockRangePagerConfig, createBlockRangePagerParameters, BlockRange, PaginatableItem } from './Pagination';
+export type { BlockRangePagerConfig, createBlockRangePagerParameters, BlockRange, PaginatableItem, onBlockRangeCallback } from './Pagination';

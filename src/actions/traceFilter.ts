@@ -17,6 +17,9 @@ import  type { TraceFilterParameters, TraceFilterReturnType, CoreClient, Hash } 
  * that match the filtering criteria.
  */
 export async function traceFilter(client: CoreClient, params: TraceFilterParameters): Promise<TraceFilterReturnType> {
+    if (typeof params.fromAddress === "string") params.fromAddress = [params.fromAddress];
+    if (typeof params.toAddress === "string") params.toAddress = [params.toAddress];
+    
     return await client.request<{
         method: 'trace_filter',
         Parameters: TraceFilterParameters[],
