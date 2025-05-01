@@ -7,23 +7,17 @@ import { adjustRangeSize, getBlockRange, getNextStartBlock, isBlockLimitReached 
  * 
  * @param foundItemsThisPage - All items collected from batch fetches for this page.
  * @param itemsPerPage - The target number of items for the page.
- * @param endReached - Flag indicating if the search hit the definitive limit during batch fetching.
+ * @param hasMore - Flag indicating if there are potentially more items for the next page.
  * @returns The FetchPageResult containing the sliced items and the next pagination state.
  * @private
  */
 export function formatGetPageResult<T extends PaginatableItem>(
     foundItemsThisPage: T[],
     itemsPerPage: number,
-    endReached: boolean
+    hasMore: boolean
 ): FetchPageResult<T> {
     // Extract the exact number of items requested for this page
     const itemsForPage: T[] = foundItemsThisPage.slice(0, itemsPerPage);
-
-    // Determine if there are potentially more items for the next page.
-    // This is true if we collected AT LEAST itemsPerPage items during the batch fetching loop
-    // AND we did NOT definitively hit the conceptual 'end' during this page's fetch loop.
-    // Note: If itemsPerPage is 0, itemsForPage.length >= itemsPerPage is true, so hasMore depends only on !endReached.
-    const hasMore: boolean = itemsForPage.length >= itemsPerPage && !endReached;
 
     // Determine the state for the *next* page fetch.
     // The `start_block` and `start_index_in_block` for the *next* page are based on the *last item* included in *this* page,

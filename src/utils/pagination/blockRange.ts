@@ -157,7 +157,7 @@ export function adjustRangeSize(
 /**
  * Checks if the search has reached the definitive limit based on the current search block.
  * This limit is defined by the blockLimit configuration.
- * @param currentSearchBlock - The block number where the next batch search would start.
+ * @param block - The block number where the next batch search would start.
  * @returns True if the limit is reached, false otherwise.
  * @private
  */
