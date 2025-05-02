@@ -1,4 +1,5 @@
 import { getAddress, slice } from ".";
+import { zeroAddress } from "..";
 import { Address, Hex } from "../types";
 
 /**
@@ -7,15 +8,15 @@ import { Address, Hex } from "../types";
  * @param startByteIndex The index of the first byte to extract from the bytes value.
  * @returns The address or undefined if the conversion failed.
  */
-export const bytesToAddress = (bytes: Hex, startByteIndex: number): Address | undefined => {
-    try {
-        // Extract 20 bytes (40 hex chars) starting from the specified index
-        // startByteIndex * 2 for hex chars, +2 to account for '0x' prefix
-        const addressBytes = slice(bytes, startByteIndex, startByteIndex + 20);
-        return getAddress(addressBytes); // Format and checksum
-    } catch (e) {
-        return undefined; // Handle potential slicing or formatting errors
-    }
+export const bytesToAddress = (bytes: Hex, startByteIndex: number): Address => {
+    if (startByteIndex < 0) throw new Error(`startByteIndex must be greater than or equal to 0, got ${startByteIndex}`);
+    if (!bytes || bytes.length < startByteIndex + 20) throw new Error(`Bytes value must be at least ${startByteIndex + 20} characters long, got ${bytes?.length ?? 0}`);
+
+    // Extracts 20 bytes starting from startByteIndex
+    const addressBytes = slice(bytes, startByteIndex, startByteIndex + 20);
+
+    if (addressBytes.length !== 42) throw new Error(`Address bytes must be 42 characters long, got ${addressBytes.length}`);
+    return getAddress(addressBytes);
 };
 
 /**
@@ -23,6 +24,8 @@ export const bytesToAddress = (bytes: Hex, startByteIndex: number): Address | un
  * @param bytes The bytes32 value to convert.
  * @returns The address or undefined if the conversion failed.
  */
-export const bytes32ToAddress = (bytes: Hex): Address | undefined => {
-    return bytesToAddress(bytes, -20);
+export const bytes32ToAddress = (bytes: Hex): Address => {
+    if (!bytes || bytes.length !== 66) throw new Error(`Bytes32 value must be 66 characters long, got ${bytes?.length ?? 0}`);
+
+    return bytesToAddress(bytes, 12);
 };
