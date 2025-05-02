@@ -17,6 +17,11 @@
       "import": "./dist/actions/index.mjs",
       "require": "./dist/actions/index.js"
     },
+    "./accounts": {
+      "types": "./dist/accounts/index.d.ts",
+      "import": "./dist/accounts/index.mjs",
+      "require": "./dist/accounts/index.js"
+    },
     "./types": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/types/index.mjs",
