@@ -52,9 +52,6 @@ export {
     sendTransaction, signMessage, signTypedData, writeContract
 } from "permissionless/actions/smartAccount";
 
-/** Contract Actions */
-export { getContract } from "./getContract";
-
 /** Trace Actions */
 export { traceFilter } from "./traceFilter";
 

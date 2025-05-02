@@ -113,7 +113,6 @@ export {
     TraceFilterParameters, TraceFilterReturnType, TraceTransactionParameters, TraceTransactionReturnType, TraceBlockParameters, TraceBlockReturnType,
     TraceAction, TraceActionResult, TraceEntry
 } from './Trace';
-export { GetContractParameters, GetContractReturnType, AbiToContractEventsHandlers } from './Contract';
 export { TransactionOptions } from './Transaction';
 
 export type { BlockRangePagerConfig, createBlockRangePagerParameters, BlockRange, PaginatableItem, onBlockRangeCallback } from './Pagination';
