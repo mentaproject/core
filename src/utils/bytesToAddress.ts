@@ -1,5 +1,4 @@
 import { getAddress, slice } from ".";
-import { zeroAddress } from "..";
 import { Address, Hex } from "../types";
 
 /**
