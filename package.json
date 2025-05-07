@@ -54,9 +54,9 @@
     "build:types": "tsc --project tsconfig.json --emitDeclarationOnly",
     "build:runtime": "rollup -c rollup.config.cjs",
     "build": "npm run build:types && npm run build:runtime",
-    "patch": "npm version patch && npm run build && npm publish",
-    "minor": "npm version minor && npm run build && npm publish",
-    "major": "npm version major && npm run build && npm publish"
+    "patch": "npm version patch && npm run build && npm publish --access public",
+    "minor": "npm version minor && npm run build && npm publish --access public",
+    "major": "npm version major && npm run build && npm publish --access public"
   },
   "author": "@mentaproject",
   "license": "ISC",
