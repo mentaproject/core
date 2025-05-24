@@ -54,6 +54,7 @@ export {
 
 /** Trace Actions */
 export { traceFilter } from "./traceFilter";
+export { traceTransaction } from "./traceTransaction";
 
 /** Block Range Actions */
 export { createBlockRangePager } from "./createBlockRangePager";
