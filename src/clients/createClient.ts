@@ -21,7 +21,7 @@ export function createClient(parameters: CoreClientConfig): CoreClient {
             transport,
             key,
             name,
-            type: "bundlerClient" // TODO: is this okay?
+            type: "bundlerClient" // TODO: Is this okay?
         }),
         { client: client_, paymaster, paymasterContext, userOperation }
     )

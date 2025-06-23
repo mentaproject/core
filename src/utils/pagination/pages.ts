@@ -53,7 +53,8 @@ export function formatGetPageResult<T extends PaginatableItem>(
 
 /**
  * Initializes the internal fetcher state based on the provided initial pagination state.
- * 
+ *
+ * @param config - The block range pager configuration.
  * @param initialPaginationState - The state from the previous page, or null/undefined for the first page.
  * @returns An object containing the initial currentSearchBlock, startIndexInBlock, and whether the end was reached immediately.
  * @private
@@ -88,13 +89,12 @@ export function initPaginationState(config: BlockRangePagerConfig, initialPagina
  * Fetches items by making multiple batch requests with dynamically adjusted block ranges
  * until enough items are collected for a full page or the search limit is reached.
  * It handles resuming from a specific item index within a block if provided in the initial state.
- * 
+ *
+ * @param config - The block range pager configuration.
  * @param fetchBatchCallback - The user-provided async function to fetch data for a single block range.
- * @param itemsPerPage - The target number of items to return for this logical "page".
  * @param initialPaginationState - The state object from the *previous* page, indicating where to resume the search.
  * Pass null or undefined for the very first page fetch.
- * @param callbackParams - Additional parameters to pass to the fetchBatchCallback.
- * 
+ *
  * @returns A Promise resolving to `FetchPageResult<T>`, containing the items found for the page
  * and the necessary state (`PaginationState`) to fetch the next page.
  */

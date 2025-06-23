@@ -3,24 +3,23 @@ import { onBlockRangeCallback, BlockRangePagerConfig, PaginatableItem, Paginatio
 import { getPage } from "../utils/pagination/pages";
 
 /**
- * Creates a pager to iterate over blockranges. Blockranges are dynamically adjusted based on the provided configuration
+ * Creates a pager to iterate over block ranges. Block ranges are dynamically adjusted based on the provided configuration
  * and how many items are found per batch.
- * 
- * If the actual blockrange return too many items, the pager will automatically reduce the range size for the next batch.
- * If the actual blockrange return too few items, the pager will automatically increase the range size for the next batch.
- * 
+ *
+ * If the actual block range returns too many items, the pager will automatically reduce the range size for the next batch.
+ * If the actual block range returns too few items, the pager will automatically increase the range size for the next batch.
+ *
  * This method is optimized to maximize efficiency by fetching items and minimizing the charge on the RPC node by
- * asking too many items per batch or too many batches per seconds.
- * 
+ * requesting too many items per batch or too many batches per second.
+ *
  * Useful for methods like `eth_getLogs` or `trace_filter` that iterate over blocks to find items.
  *
  * @template T - The type of items to paginate, must extend PaginatableItem.
- * @param config - The configuration for fetching blocks (e.g., start/end block number).
+ * @param params - The parameters for creating the pager.
  * @param onBlockRange - The callback function to execute for each block range to fetch items.
- * @param itemsPerPage - The desired number of items per page.
  * @param paginationState - The initial pagination state (used for fetching subsequent pages).
- * 
- * @returns  A promise that resolves with a PaginatedResult object containing the first page of items and a function to fetch the next page.
+ *
+ * @returns A promise that resolves with a PaginatedResult object containing the first page of items and a function to fetch the next page.
  */
 export async function createBlockRangePager<T extends PaginatableItem>(
     params: createBlockRangePagerParameters,

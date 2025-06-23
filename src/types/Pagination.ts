@@ -6,24 +6,24 @@ import { PaginatedResult } from "../structures/PaginatedResult";
 
 export type createBlockRangePagerParameters = {
     /** The number of items to return per page. */
-    itemsPerPage: number,
+    itemsPerPage: number;
     /** The starting block number to fetch. */
-    startBlock: bigint,
+    startBlock: bigint;
     /** The latest block number to search to. (e.g., latest block in forward, genesis block in backward) */
-    blockLimit: bigint,
+    blockLimit: bigint;
     /** The direction of the block search. */
-    direction: "backward" | "forward",
+    direction: "backward" | "forward";
     /** Optional configuration options for the pager. Recommended to modify in high-volume scenarios. */
     options?: {
-        dividerOnHigh: number,
-        multiplierOnLow: number,
-        multiplierOnZero: number,
-        highActivityThreshold: number,
-        lowActivityThreshold: number,
-        initialRangeSize: number,
-        maxRangeSize: number,
-        minRangeSize: number,
-    }
+        dividerOnHigh: number;
+        multiplierOnLow: number;
+        multiplierOnZero: number;
+        highActivityThreshold: number;
+        lowActivityThreshold: number;
+        initialRangeSize: number;
+        maxRangeSize: number;
+        minRangeSize: number;
+    };
 };
 
 export type BlockRangePagerConfig = {
@@ -31,9 +31,9 @@ export type BlockRangePagerConfig = {
 
     /** The range of blocks to fetch in the first batch. */
     initialRangeSize: number;
-    /** The minimum range size to fetch if the pager reduce the range too much. */
+    /** The minimum range size to fetch if the pager reduces the range too much. */
     minRangeSize: number;
-    /** The maximum range size to fetch if the pager increase the range too much. */
+    /** The maximum range size to fetch if the pager increases the range too much. */
     maxRangeSize: number;
 
     // Multiplier/divider parameters
@@ -56,7 +56,7 @@ export type BlockRangePagerConfig = {
     /** The latest block number to search to. (e.g., latest block in forward, genesis block in backward) */
     blockLimit: bigint;
     /** The number of items to return per page. */
-    itemsPerPage: number,
+    itemsPerPage: number;
 };
 
 // =============================================================================

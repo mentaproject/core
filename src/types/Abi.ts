@@ -62,13 +62,13 @@ export type AbiFunctionToSignature<
     }
     ? TAbiFunction['stateMutability'] extends 'view' | 'pure'
         // --- Read-only Functions ---
-        ? TInputs extends readonly [] // Utilise TInputs (inféré)
-            ? () => Promise<AbiOutputsToReturnType<TOutputs>> // Utilise TOutputs (inféré)
+        ? TInputs extends readonly [] // Uses TInputs (inferred)
+            ? () => Promise<AbiOutputsToReturnType<TOutputs>> // Uses TOutputs (inferred)
             : (args: AbiInputsToArgsObject<TInputs>) => Promise<AbiOutputsToReturnType<TOutputs>>
         // --- State-Changing Functions ---
-        : TInputs extends readonly [] // Utilise TInputs (inféré)
+        : TInputs extends readonly [] // Uses TInputs (inferred)
             ? (options?: TransactionOptions) => Promise<Hex>
-            : ( // Utilise TInputs (inféré)
+            : ( // Uses TInputs (inferred)
                   args: AbiInputsToArgsObject<TInputs>,
                   options?: TransactionOptions
               ) => Promise<Hex>

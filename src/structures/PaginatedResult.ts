@@ -14,7 +14,7 @@ export class PaginatedResult<T extends PaginatableItem> { // Apply the constrain
 
     /**
      * @param items - The items for the current page (should already be sliced to page size).
-     * @param paginationState - The state object required to fetch the page *after* this one.
+     * @param nextPaginationState - The state object required to fetch the page *after* this one.
      * @param fetchNextPageCallback - An async function () => Promise<PaginatedResult<T> | null> that encapsulates the logic to fetch the next page.
      */
     constructor(items: T[], nextPaginationState: PaginationState, fetchNextPageCallback: FetchNextPageCallback<T>) {
