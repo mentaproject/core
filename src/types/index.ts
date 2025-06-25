@@ -1,4 +1,4 @@
-export type { AccessList, Address, Hash, Hex, BlockTag, Chain, Log, TransactionType, Quantity, AbiItem, Transport } from 'viem';
+export type { AccessList, Address, Hash, Hex, BlockTag, Chain, Log, TransactionType, Quantity, AbiItem, Transport, Withdrawal, Transaction } from 'viem';
 export type {
     // ====================================
     // Viem Actions Return Types
@@ -103,7 +103,6 @@ export type {
     SignMessageParameters,
     SignTypedDataParameters,
     WriteContractParameters,
-    Withdrawal
 } from "viem";
 
 export type { AbiError, AbiConstructor, AbiFunction, AbiEvent, AbiParameter, AbiParameterToPrimitiveType } from "abitype";
