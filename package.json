@@ -55,8 +55,6 @@
     "build:types": "tsc --project tsconfig.json --emitDeclarationOnly",
     "build:runtime": "rollup -c rollup.config.cjs",
     "build": "npm run build:types && npm run build:runtime",
-    "build:docs": "typedoc",
-    "serve:docs": "npx http-server docs",
     "patch": "npm version patch && npm run build && npm publish --access public",
     "minor": "npm version minor && npm run build && npm publish --access public",
     "major": "npm version major && npm run build && npm publish --access public"
@@ -64,12 +62,6 @@
   "author": "@mentaproject",
   "license": "ISC",
   "dependencies": {
-    "@langchain/community": "^0.3.47",
-    "@langchain/google-genai": "^0.2.13",
-    "@langchain/openai": "^0.5.15",
-    "chromadb": "^3.0.4",
-    "dotenv": "^16.5.0",
-    "langchain": "^0.3.29",
     "permissionless": "^0.2.42"
   },
   "devDependencies": {
@@ -81,7 +73,6 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsx": "^4.19.4",
-    "typedoc": "^0.28.5",
     "typescript": "^5.8.3"
   },
   "repository": {
