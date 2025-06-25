@@ -103,6 +103,7 @@ export type {
     SignMessageParameters,
     SignTypedDataParameters,
     WriteContractParameters,
+    Withdrawal
 } from "viem";
 
 export type { AbiError, AbiConstructor, AbiFunction, AbiEvent, AbiParameter, AbiParameterToPrimitiveType } from "abitype";
