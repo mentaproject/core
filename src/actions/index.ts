@@ -57,4 +57,4 @@ export { traceFilter } from "./traceFilter";
 export { traceTransaction } from "./traceTransaction";
 
 /** Block Range Actions */
-export { createBlockRangePager } from "./createBlockRangePager";
+export { fetchByBlockRange } from "./fetchByBlockRange";

@@ -65,11 +65,13 @@
     "permissionless": "^0.2.42"
   },
   "devDependencies": {
+    "@jest/globals": "^30.0.3",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "rollup": "^4.40.1",
+    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsx": "^4.19.4",
