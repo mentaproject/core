@@ -38,11 +38,6 @@
       "import": "./dist/clients/index.mjs",
       "require": "./dist/clients/index.js"
     },
-    "./structures": {
-      "types": "./dist/structures/index.d.ts",
-      "import": "./dist/structures/index.mjs",
-      "require": "./dist/structures/index.js"
-    },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.mjs",
