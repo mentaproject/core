@@ -1,4 +1,4 @@
-export type { AccessList, Address, Hash, Hex, BlockTag, Chain, Log, TransactionType, Quantity, AbiItem, Transport, Withdrawal, Transaction as RawTransaction } from 'viem';
+export type { AccessList, Address, Hash, Hex, BlockTag, Chain, Log, TransactionType, Quantity, AbiItem, Transport, Withdrawal, Transaction } from 'viem';
 export type {
     // ====================================
     // Viem Actions Return Types
