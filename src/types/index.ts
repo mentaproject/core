@@ -113,6 +113,8 @@ export {
     TraceFilterParameters, TraceFilterReturnType, TraceTransactionParameters, TraceTransactionReturnType, TraceBlockParameters, TraceBlockReturnType,
     TraceAction, TraceActionResult, TraceEntry
 } from './Trace';
+
+export { FetchBlockRangeParameters, onBlockRangeCallback, BlockRange } from './BlockRangeFetcher';
 export { TransactionOptions } from './Transaction';
 
 export type { PublicActions, WalletActions } from "viem"

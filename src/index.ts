@@ -94,99 +94,11 @@ export {
     sendTransaction, signMessage, signTypedData, writeContract
 } from "permissionless/actions/smartAccount";
 
-/** Trace Actions */
-/**
- * @summary Calls the 'trace_filter' RPC method to retrieve filtered execution traces.
- * @param {CoreClient} client - The CoreClient instance used to make the RPC call.
- * @param {TraceFilterParameters} params - The filtering parameters for the trace request.
- * @returns {Promise<TraceFilterReturnType>} A promise that returns an array of trace entries.
- * @example
- * import { createClient, http, traceFilter } from 'menta';
- * import { mainnet } from 'viem/chains';
- *
- * const client = createClient({
- *   chain: mainnet,
- *   transport: http("https://mainnet.infura.io/v3/YOUR_API_KEY"),
- * });
- *
- * const traces = await traceFilter(client, {
- *   fromBlock: "0x1",
- *   toBlock: "0x2",
- *   fromAddress: ["0x..."],
- * });
- */
+export { fetchByBlockRange } from "./actions/fetchByBlockRange";
 export { traceFilter } from "./actions/traceFilter";
-/**
- * @summary Calls the 'trace_transaction' RPC method to retrieve execution traces for a specific transaction.
- * @param {CoreClient} client - The CoreClient instance used to make the RPC call.
- * @param {TraceTransactionParameters} params - The transaction hash for which to retrieve traces.
- * @returns {Promise<TraceTransactionReturnType>} A promise that returns an array of trace entries.
- * @example
- * import { createClient, http, traceTransaction } from 'menta';
- * import { mainnet } from 'viem/chains';
- *
- * const client = createClient({
- *   chain: mainnet,
- *   transport: http("https://mainnet.infura.io/v3/YOUR_API_KEY"),
- * });
- *
- * const traces = await traceTransaction(client, {
- *   hash: "0x...",
- * });
- */
 export { traceTransaction } from "./actions/traceTransaction";
 
-/** Block Range Actions */
-/**
- * @summary Creates a pager to iterate over block ranges.
- * @template T - The type of items to paginate, must extend PaginatableItem.
- * @param {createBlockRangePagerParameters} params - The parameters for creating the pager.
- * @param {onBlockRangeCallback<T>} onBlockRange - The callback function to execute for each block range to retrieve items.
- * @param {PaginationState} [paginationState] - The initial pagination state (used to retrieve subsequent pages).
- * @returns {Promise<PaginatedResult<T>>} A promise that resolves with a PaginatedResult object containing the first page of items and a function to retrieve the next page.
- * @example
- * import { createBlockRangePager, createClient, http } from 'menta';
- * import { mainnet } from 'viem/chains';
- *
- * const client = createClient({
- *   chain: mainnet,
- *   transport: http("https://mainnet.infura.io/v3/YOUR_API_KEY"),
- * });
- *
- * async function getLogsInBlockRange({ client, blockRange }) {
- *   const logs = await client.getLogs({
- *     fromBlock: blockRange.fromBlock,
- *     toBlock: blockRange.toBlock,
- *   });
- *   return logs.map(log => ({ ...log, blockNumber: log.blockNumber }));
- * }
- *
- * const pager = await createBlockRangePager(
- *   {
- *     itemsPerPage: 100,
- *     startBlock: 1000n,
- *     blockLimit: 100n,
- *     direction: "forward",
- *   },
- *   ({ blockRange }) => getLogsInBlockRange({ client, blockRange })
- * );
- *
- * console.log("First page logs:", pager.items);
- * const nextPage = await pager.next();
- * console.log("Second page logs:", nextPage.items);
- */
-export { createBlockRangePager } from "./actions/createBlockRangePager";
-
 export * from "viem/chains";
-
-/**
- * @summary Represents the result of a pagination operation.
- * @template T - The type of paginated items.
- * @property {T[]} items - The items on the current page.
- * @property {boolean} hasNext - Indicates if there is a next page.
- * @property {function(): Promise<PaginatedResult<T>>} next - Function to retrieve the next page.
- */
-export { PaginatedResult } from './structures/PaginatedResult';
 
 /**
  * @summary Base error for ABI types.
