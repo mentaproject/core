@@ -11,7 +11,7 @@ describe("traceFilter", () => {
 
   // Réinitialiser les mocks avant chaque test pour garantir l'isolation.
   beforeEach(() => {
-    (mockClient.request as jest.Mock).mockReset();
+    (mockClient.request as jest.Mock).mockClear();
   });
 
   /**

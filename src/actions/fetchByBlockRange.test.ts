@@ -6,14 +6,12 @@ describe("fetchByBlockRange", () => {
   const onBlockRangeMock = jest.fn<onBlockRangeCallback>();
 
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   it("should fetch data in a forward direction", async () => {
     onBlockRangeMock.mockResolvedValueOnce(["item1", "item2"]);
     onBlockRangeMock.mockResolvedValueOnce(["item3"]);
-    onBlockRangeMock.mockResolvedValueOnce([]);
-    onBlockRangeMock.mockResolvedValueOnce([]);
 
     const params: FetchBlockRangeParameters = {
       fromBlock: 1000n,
@@ -36,6 +34,11 @@ describe("fetchByBlockRange", () => {
     const result = await fetchByBlockRange(params);
 
     expect(result).toEqual(["item1", "item2", "item3"]);
+    // The loop terminates once the `toBlock` is reached.
+    // 1. First call: 1000 -> 1100. Range size: 100. Returns 2 items (low activity).
+    //    New range size: 100 * 1.5 = 150.
+    // 2. Second call: next block is 1101. The range would be [1101, 1101 + 150 = 1251],
+    //    but it's capped by the global `toBlock` of 1200.
     expect(onBlockRangeMock).toHaveBeenCalledTimes(2);
     expect(onBlockRangeMock).toHaveBeenNthCalledWith(
       1,
@@ -44,7 +47,8 @@ describe("fetchByBlockRange", () => {
     );
     expect(onBlockRangeMock).toHaveBeenNthCalledWith(
       2,
-      { fromBlock: 1101n, toBlock: 1251n },
+      // The range is capped by the `toBlock` parameter
+      { fromBlock: 1101n, toBlock: 1200n },
       expect.any(Function)
     );
   });
@@ -52,8 +56,6 @@ describe("fetchByBlockRange", () => {
   it("should fetch data in a backward direction", async () => {
     onBlockRangeMock.mockResolvedValueOnce(["item1", "item2"]);
     onBlockRangeMock.mockResolvedValueOnce(["item3"]);
-    onBlockRangeMock.mockResolvedValueOnce([]);
-    onBlockRangeMock.mockResolvedValueOnce([]);
 
     const params: FetchBlockRangeParameters = {
       fromBlock: 1200n,
@@ -76,6 +78,11 @@ describe("fetchByBlockRange", () => {
     const result = await fetchByBlockRange(params);
 
     expect(result).toEqual(["item1", "item2", "item3"]);
+    // The loop terminates once the `toBlock` is reached.
+    // 1. First call: 1100 -> 1200. Range size: 100. Returns 2 items (low activity).
+    //    New range size: 100 * 1.5 = 150.
+    // 2. Second call: next block is 1099. The range would be [1099 - 150 = 949, 1099],
+    //    but it's capped by the global `toBlock` of 1000.
     expect(onBlockRangeMock).toHaveBeenCalledTimes(2);
     expect(onBlockRangeMock).toHaveBeenNthCalledWith(
       1,
@@ -84,7 +91,8 @@ describe("fetchByBlockRange", () => {
     );
     expect(onBlockRangeMock).toHaveBeenNthCalledWith(
       2,
-      { fromBlock: 949n, toBlock: 1099n },
+      // The range is capped by the `toBlock` parameter
+      { fromBlock: 1000n, toBlock: 1099n },
       expect.any(Function)
     );
   });
@@ -205,5 +213,23 @@ describe("fetchByBlockRange", () => {
       { fromBlock: 1228n, toBlock: 1378n },
       expect.any(Function)
     );
+  });
+  
+  it("should stop fetching when itemLimit is reached", async () => {
+    onBlockRangeMock.mockResolvedValueOnce(["item1", "item2"]);
+    onBlockRangeMock.mockResolvedValueOnce(["item3"]);
+
+    const params: FetchBlockRangeParameters = {
+      fromBlock: 1000n,
+      toBlock: 2000n,
+      direction: "forward",
+      itemLimit: 2,
+      onBlockRange: onBlockRangeMock,
+    };
+
+    const result = await fetchByBlockRange(params);
+
+    expect(result).toEqual(["item1", "item2"]);
+    expect(onBlockRangeMock).toHaveBeenCalledTimes(1);
   });
 });

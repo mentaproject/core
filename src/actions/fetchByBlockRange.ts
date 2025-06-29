@@ -7,7 +7,11 @@ function calcBlockRange(fromBlock: bigint, rangeSize: number, direction: "backwa
 
 function hasHitBlockLimit(blockNumber: bigint, direction: "backward" | "forward", blockLimit: bigint) {
     return direction === "backward" ? blockNumber < blockLimit : blockNumber > blockLimit;
-}
+};
+
+function hasHitItemLimit(items: any[], itemLimit: number) {
+    return items.length >= itemLimit;
+};
 
 /**
  * Fetch large amounts of data in batches by exploring with dynamic block ranges.
@@ -52,8 +56,24 @@ export async function fetchByBlockRange(params: FetchBlockRangeParameters) {
 
     const totalItems: any[] = [];
 
-    while (!stopped && !hasHitBlockLimit(currentBlock, params.direction, params.toBlock)) {
+    function shouldStop() {
+        return hasHitBlockLimit(currentBlock, params.direction, params.toBlock) || hasHitItemLimit(totalItems, params.itemLimit);
+    }
+
+    while (!stopped && !shouldStop() ) {
         const blockRange = calcBlockRange(currentBlock, rangeSize, params.direction);
+
+        // Cap the block range to the overall limits
+        if (params.direction === "forward") {
+            if (blockRange.toBlock > params.toBlock) {
+                blockRange.toBlock = params.toBlock;
+            }
+        } else { // backward
+            if (blockRange.fromBlock < params.toBlock) {
+                blockRange.fromBlock = params.toBlock;
+            }
+        }
+
         const batchItems = await params.onBlockRange(blockRange, stop);
 
         totalItems.push(...batchItems);
