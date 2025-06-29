@@ -403,27 +403,6 @@ export type { TraceEntry } from './types/Trace';
 export { TransactionOptions } from './types/Transaction';
 
 /**
- * @summary Configuration for the block range pager.
- */
-export type { BlockRangePagerConfig } from './types/Pagination';
-/**
- * @summary Parameters for creating a block range pager.
- */
-export type { createBlockRangePagerParameters } from './types/Pagination';
-/**
- * @summary Represents a block range.
- */
-export type { BlockRange } from './types/Pagination';
-/**
- * @summary Interface for a paginable item.
- */
-export type { PaginatableItem } from './types/Pagination';
-/**
- * @summary Callback function for handling block ranges.
- */
-export type { onBlockRangeCallback } from './types/Pagination';
-
-/**
  * @summary Public actions available for a Viem client.
  */
 /**

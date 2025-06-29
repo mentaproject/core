@@ -115,6 +115,4 @@ export {
 } from './Trace';
 export { TransactionOptions } from './Transaction';
 
-export type { BlockRangePagerConfig, createBlockRangePagerParameters, BlockRange, PaginatableItem, onBlockRangeCallback } from './Pagination';
-
 export type { PublicActions, WalletActions } from "viem"
