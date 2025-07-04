@@ -102,5 +102,5 @@ export async function fetchByBlockRange(params: FetchBlockRangeParameters) {
         }
     }
 
-    return totalItems;
+    return totalItems.slice(0, params.itemLimit);
 }
