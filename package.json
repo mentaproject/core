@@ -13,6 +13,11 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
+    "./account-abstraction": {
+      "types": "./dist/account-abstraction/index.d.ts",
+      "import": "./dist/account-abstraction/index.mjs",
+      "require": "./dist/account-abstraction/index.js"
+    },
     "./actions": {
       "types": "./dist/actions/index.d.ts",
       "import": "./dist/actions/index.mjs",
