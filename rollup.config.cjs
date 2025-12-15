@@ -20,11 +20,13 @@ module.exports = entries.map(({ input, output }) => ({
       file: `${output}.js`,
       format: "cjs",
       sourcemap: true,
+      inlineDynamicImports: true,
     },
     {
       file: `${output}.mjs`,
       format: "es",
       sourcemap: true,
+      inlineDynamicImports: true,
     },
   ],
   plugins: [
