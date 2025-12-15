@@ -1,5 +1,6 @@
 import { LocalAccount } from "..";
 import { Transport, Chain, Hash } from ".";
+import { createMentaAccount } from "src/clients/createMentaAccount";
 
 export interface PasskeySigner extends LocalAccount {
   pubX: bigint;
@@ -14,3 +15,5 @@ export interface MentaAccountParams {
   chain: Chain;
   bundlerTransport: Transport;
 }
+
+export type MentaAccountClient = Awaited<ReturnType<typeof createMentaAccount>>;
