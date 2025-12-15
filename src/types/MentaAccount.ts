@@ -1,6 +1,6 @@
 import { LocalAccount } from "..";
 import { Transport, Chain, Hash } from ".";
-import { createMentaAccount } from "src/clients/createMentaAccount";
+import { createMentaAccount } from "../clients";
 
 export interface PasskeySigner extends LocalAccount {
   pubX: bigint;
