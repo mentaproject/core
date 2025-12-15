@@ -29,7 +29,6 @@ export async function createMentaAccount(
 
   return createSmartAccountClient({
     account: kernel,
-    chain: params.chain,
     bundlerTransport: params.bundlerTransport,
   }).extend(erc7579Actions());
 }

@@ -12,7 +12,6 @@ export interface PasskeySigner extends LocalAccount {
 
 export interface MentaAccountParams {
   signer: PasskeySigner;
-  chain: Chain;
   bundlerTransport: Transport;
 }
 
