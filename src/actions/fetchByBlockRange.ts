@@ -29,6 +29,7 @@ function hasHitItemLimit(items: any[], itemLimit: number) {
  */
 export async function fetchByBlockRange(params: FetchBlockRangeParameters) {
     const options = {
+
         // By how much to increase/decrease the range size if the batch returns few/many items
         dividerOnHigh: 2,
         multiplierOnLow: 1.5,
@@ -43,6 +44,7 @@ export async function fetchByBlockRange(params: FetchBlockRangeParameters) {
         maxRangeSize: 100_000,
         minRangeSize: 1,
 
+        // 
         ...params.options,
     };
 
