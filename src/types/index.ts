@@ -148,6 +148,10 @@ export {
   BlockRange,
 } from "./BlockRangeFetcher";
 export { TransactionOptions } from "./Transaction";
-export { MentaAccountParams, PasskeySigner } from "./MentaAccount";
+export {
+  MentaAccountParams,
+  PasskeySigner,
+  MentaAccountClient,
+} from "./MentaAccount";
 
 export type { PublicActions, WalletActions } from "viem";
