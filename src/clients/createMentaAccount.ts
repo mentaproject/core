@@ -2,17 +2,24 @@ import {
   PasskeyValidatorContractVersion,
   toPasskeyValidator,
 } from "@zerodev/passkey-validator";
-import { CoreClient, MentaAccountParams } from "../types";
+import { MentaAccountParams } from "../types";
 import { entryPoint07Address } from "../account-abstraction";
 import { toKernelSmartAccount } from "permissionless/accounts";
 import { createSmartAccountClient } from "permissionless";
 import { erc7579Actions } from "permissionless/actions/erc7579";
+import type {
+  Client,
+  Transport,
+  Chain,
+  JsonRpcAccount,
+  LocalAccount,
+} from "viem";
 
-export async function createMentaAccount(
-  coreClient: CoreClient,
+export async function createMentaAccount<TChain extends Chain | undefined>(
+  client: Client<Transport, TChain, JsonRpcAccount | LocalAccount | undefined>,
   params: MentaAccountParams,
 ) {
-  const validator = await toPasskeyValidator(coreClient, {
+  const validator = await toPasskeyValidator(client, {
     webAuthnKey: params.signer,
     entryPoint: {
       address: entryPoint07Address,
@@ -24,7 +31,7 @@ export async function createMentaAccount(
 
   const kernel = await toKernelSmartAccount({
     owners: [validator],
-    client: coreClient as any,
+    client: client,
   });
 
   return createSmartAccountClient({
