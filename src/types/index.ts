@@ -128,7 +128,7 @@ export type {
   AbiParameterToPrimitiveType,
 } from "abitype";
 
-export type { CoreClient, CoreClientConfig } from "./CoreClient";
+export type { CoreClient, SmartAccountCoreClient, CoreClientConfig } from "./CoreClient";
 
 export {
   TraceFilterParameters,
