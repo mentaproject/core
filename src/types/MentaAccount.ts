@@ -12,7 +12,10 @@ export interface PasskeySigner extends LocalAccount {
 
 export interface MentaAccountParams {
   signer: PasskeySigner;
+  /** Transport for ERC-4337 bundler calls */
   bundlerTransport: Transport;
+  /** Transport for standard Ethereum RPC calls (eth_getBlock, etc.) */
+  publicTransport: Transport;
 }
 
 export type MentaAccountClient = Awaited<ReturnType<typeof createMentaAccount>>;
