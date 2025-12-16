@@ -12,15 +12,14 @@ import type {
   Client,
   Transport,
   Chain,
-  JsonRpcAccount,
-  LocalAccount,
+  Account,
 } from "viem";
 
 export async function createMentaAccount<TChain extends Chain | undefined>(
-  client: Client<Transport, TChain, JsonRpcAccount | LocalAccount | undefined>,
+  client: Client<Transport, TChain, Account | undefined>,
   params: MentaAccountParams,
 ) {
-  const validator = await toPasskeyValidator(client, {
+  const validator = await toPasskeyValidator(client as any, {
     webAuthnKey: params.signer,
     entryPoint: {
       address: entryPoint07Address,
@@ -32,7 +31,7 @@ export async function createMentaAccount<TChain extends Chain | undefined>(
 
   const kernel = await toKernelSmartAccount({
     owners: [validator],
-    client: client,
+    client: client as any,
   });
 
   // Create a routed transport that sends bundler methods to the bundler
