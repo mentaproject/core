@@ -1,34 +1,32 @@
+import {
+  PasskeyValidatorContractVersion,
+  toPasskeyValidator,
+} from "@zerodev/passkey-validator";
 import { MentaAccountParams } from "../types";
+import { entryPoint07Address } from "../account-abstraction";
 import { toKernelSmartAccount } from "permissionless/accounts";
 import { createSmartAccountClient } from "permissionless";
 import { erc7579Actions } from "permissionless/actions/erc7579";
 import { createRoutedTransport } from "../utils/createRoutedTransport";
 import type { Client, Transport, Chain, Account } from "viem";
 
-// WebAuthn Validator address for Kernel v0.3.3 (PasskeyValidator v0.0.3)
-const WEBAUTHN_VALIDATOR_ADDRESS = "0x7ab16Ff354AcB328452F1D445b3Ddee9a91e9e69" as const;
-
 export async function createMentaAccount<TChain extends Chain | undefined>(
   client: Client<Transport, TChain, Account | undefined>,
   params: MentaAccountParams,
 ) {
-  // Get the WebAuthnAccount from the signer
-  // The signer must have a toWebAuthnAccount() method that returns
-  // a viem-compatible WebAuthnAccount
-  if (!("toWebAuthnAccount" in params.signer)) {
-    throw new Error(
-      "Signer must have a toWebAuthnAccount() method. " +
-        "Make sure you are using @mentaproject/signer-react-native >= 0.0.17"
-    );
-  }
-
-  const webAuthnAccount = (params.signer as any).toWebAuthnAccount();
+  const validator = await toPasskeyValidator(client as any, {
+    webAuthnKey: params.signer,
+    entryPoint: {
+      address: entryPoint07Address,
+      version: "0.7",
+    },
+    kernelVersion: "0.3.3",
+    validatorContractVersion: PasskeyValidatorContractVersion.V0_0_3_PATCHED,
+  });
 
   const kernel = await toKernelSmartAccount({
-    owners: [webAuthnAccount],
+    owners: [validator],
     client: client as any,
-    version: "0.3.3",
-    validatorAddress: WEBAUTHN_VALIDATOR_ADDRESS,
   });
 
   // Create a routed transport that sends bundler methods to the bundler
