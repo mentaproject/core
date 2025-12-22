@@ -1,6 +1,6 @@
 {
   "name": "@mentaproject/core",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Core library for menta packages, it includes all basic evm instances like Account, Transactions, Blocks etc...",
   "type": "module",
   "main": "dist/index.js",
