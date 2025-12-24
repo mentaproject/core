@@ -128,30 +128,12 @@ export type {
   AbiParameterToPrimitiveType,
 } from "abitype";
 
-export type { CoreClient, SmartAccountCoreClient, CoreClientConfig } from "./CoreClient";
+export * from "./CoreClient";
 
-export {
-  TraceFilterParameters,
-  TraceFilterReturnType,
-  TraceTransactionParameters,
-  TraceTransactionReturnType,
-  TraceBlockParameters,
-  TraceBlockReturnType,
-  TraceAction,
-  TraceActionResult,
-  TraceEntry,
-} from "./Trace";
+export * from "./Trace";
 
-export {
-  FetchBlockRangeParameters,
-  onBlockRangeCallback,
-  BlockRange,
-} from "./BlockRangeFetcher";
-export { TransactionOptions } from "./Transaction";
-export {
-  MentaAccountParams,
-  PasskeySigner,
-  MentaAccountClient,
-} from "./MentaAccount";
+export * from "./BlockRangeFetcher";
+export * from "./Transaction";
+export * from "./MentaAccount";
 
 export type { PublicActions, WalletActions } from "viem";
