@@ -62,7 +62,6 @@
   "author": "@mentaproject",
   "license": "ISC",
   "dependencies": {
-    "@zerodev/passkey-validator": "^5.6.0",
     "permissionless": "^0.2.42"
   },
   "overrides": {

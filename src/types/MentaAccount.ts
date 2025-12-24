@@ -1,21 +1,16 @@
-import { LocalAccount } from "..";
-import { Transport, Chain, Hash } from ".";
+import { Address } from "..";
+import { Transport } from ".";
 import { createMentaAccount } from "../clients";
-
-export interface PasskeySigner extends LocalAccount {
-  pubX: bigint;
-  pubY: bigint;
-  authenticatorId: string;
-  authenticatorIdHash: Hash;
-  rpID: string;
-}
+import { WebAuthnAccount } from "src/account-abstraction";
 
 export interface MentaAccountParams {
-  signer: PasskeySigner;
+  signer: WebAuthnAccount;
   /** Transport for ERC-4337 bundler calls */
   bundlerTransport: Transport;
   /** Transport for standard Ethereum RPC calls (eth_getBlock, etc.) */
   publicTransport: Transport;
+  /** Validator address for the account */
+  validatorAddress: Address;
 }
 
 export type MentaAccountClient = Awaited<ReturnType<typeof createMentaAccount>>;
