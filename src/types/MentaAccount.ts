@@ -1,7 +1,8 @@
-import { Address } from "..";
+import { Address, Chain } from "..";
 import { Transport } from ".";
-import { createMentaAccount } from "../clients";
-import { WebAuthnAccount } from "src/account-abstraction";
+import { SmartAccount, WebAuthnAccount } from "../account-abstraction";
+import { SmartAccountClient } from "permissionless";
+import { Erc7579Actions } from "permissionless/actions/erc7579";
 
 export interface MentaAccountParams {
   signer: WebAuthnAccount;
@@ -13,4 +14,7 @@ export interface MentaAccountParams {
   validatorAddress: Address;
 }
 
-export type MentaAccountClient = Awaited<ReturnType<typeof createMentaAccount>>;
+export type MentaAccountClient<
+  TChain extends Chain | undefined = Chain | undefined,
+> = SmartAccountClient<Transport, TChain, SmartAccount> &
+  Erc7579Actions<SmartAccount>;

@@ -9,8 +9,10 @@
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "module": "ES2020",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts", "test.ts", "dev", "dist"]
+  "exclude": ["node_modules", "**/*.spec.ts", "test.ts", "dev", "dist"],
 }
