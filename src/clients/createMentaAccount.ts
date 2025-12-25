@@ -3,16 +3,22 @@ import { toKernelSmartAccount } from "permissionless/accounts";
 import { createSmartAccountClient } from "permissionless";
 import { erc7579Actions } from "permissionless/actions/erc7579";
 import { createRoutedTransport } from "../utils/createRoutedTransport";
-import type { Client, Transport, Chain, Account } from "viem";
-import { entryPoint07Address } from "../account-abstraction";
+import type {
+  Client,
+  Transport,
+  Chain,
+  LocalAccount,
+  JsonRpcAccount,
+} from "viem";
+import { entryPoint07Address } from "viem/account-abstraction";
 
 export async function createMentaAccount<TChain extends Chain | undefined>(
-  client: Client<Transport, TChain, Account | undefined>,
+  client: Client<Transport, TChain, JsonRpcAccount | LocalAccount | undefined>,
   params: MentaAccountParams,
 ): Promise<MentaAccountClient<TChain>> {
   const kernel = await toKernelSmartAccount({
     owners: [params.signer],
-    client: client as any,
+    client: client,
     validatorAddress: params.validatorAddress,
     entryPoint: {
       address: entryPoint07Address,
@@ -27,9 +33,13 @@ export async function createMentaAccount<TChain extends Chain | undefined>(
     params.bundlerTransport,
   );
 
-  return createSmartAccountClient({
+  const smartAccountClient = createSmartAccountClient({
     account: kernel,
     bundlerTransport: routedTransport,
     chain: client.chain,
-  }).extend(erc7579Actions()) as MentaAccountClient<TChain>;
+  });
+
+  return smartAccountClient.extend(
+    erc7579Actions(),
+  ) as MentaAccountClient<TChain>;
 }

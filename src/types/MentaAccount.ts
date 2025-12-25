@@ -1,8 +1,10 @@
 import { Address, Chain } from "..";
 import { Transport } from ".";
 import { SmartAccount, WebAuthnAccount } from "../account-abstraction";
-import { SmartAccountClient } from "permissionless";
-import { Erc7579Actions } from "permissionless/actions/erc7579";
+import type { Client, BundlerRpcSchema } from "viem";
+import type { BundlerActions } from "viem/account-abstraction";
+import type { SmartAccountActions } from "permissionless";
+import type { Erc7579Actions } from "permissionless/actions/erc7579";
 
 export interface MentaAccountParams {
   signer: WebAuthnAccount;
@@ -16,5 +18,11 @@ export interface MentaAccountParams {
 
 export type MentaAccountClient<
   TChain extends Chain | undefined = Chain | undefined,
-> = SmartAccountClient<Transport, TChain, SmartAccount> &
+> = Client<
+  Transport,
+  TChain,
+  SmartAccount,
+  BundlerRpcSchema,
+  BundlerActions<SmartAccount> & SmartAccountActions<TChain, SmartAccount>
+> &
   Erc7579Actions<SmartAccount>;
