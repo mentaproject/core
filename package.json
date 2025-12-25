@@ -54,9 +54,11 @@
     "test": "jest",
     "build": "tsdown && tsc --emitDeclarationOnly",
     "build:fast": "tsdown",
-    "patch": "npm version patch && npm run build && npm publish --access public",
-    "minor": "npm version minor && npm run build && npm publish --access public",
-    "major": "npm version major && npm run build && npm publish --access public"
+    "preversion": "npm whoami && npm run build",
+    "postversion": "npm publish --access public && git push --follow-tags || (git tag -d $(git describe --tags --abbrev=0) && git reset --hard HEAD~1 && exit 1)",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major"
   },
   "author": "@mentaproject",
   "license": "ISC",
