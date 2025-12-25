@@ -24,6 +24,7 @@ export async function createMentaAccount<TChain extends Chain | undefined>(
       address: entryPoint07Address,
       version: "0.7",
     },
+    version: "0.3.3",
   });
 
   // Create a routed transport that sends bundler methods to the bundler
